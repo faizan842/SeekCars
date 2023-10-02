@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>SeekCars</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fonts/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Footer-Basic.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Footer-Dark.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Navigation-Clean.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+
+    <!-- <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="static/fonts/ionicons.min.css" />
+  <link rel="stylesheet" href="static/css/Footer-Basic.css" />
+  <link rel="stylesheet" href="static/css/Footer-Dark.css" />
+  <link rel="stylesheet" href="static/css/Navigation-Clean.css" />
+  <link rel="stylesheet" href="static/css/styles.css" /> -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#prediction").hide();  // Hide the message initially
+
+            $("#name-form").submit(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "/check_price",
+                    data: $("#name-form").serialize(),
+                    success: function (response) {  
+                        $("#pred-res").text(response.result);
+                        // console.log(response.arr);
+                        $("#prediction").show();
+                    }
+                });
+            });
+        });
+    </script>
+
+
+</head>
+
+<body style="color: rgb(0, 0, 0)">
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+        <div class="container">
+            <a class="navbar-brand" href="#">SeekCars.com</a>
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
+                <span class="visually-hidden">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="image-container">
+        <img class="image" src="{{ url_for('static', filename='img/3529804_64385-removebg-preview.png') }}"
+            style="filter: blur(0px)" />
+    </div>
+    <form id="name-form"
+        style=" color: var(--bs-gray-900); text-align: center; border-style: none; border-color: var(--bs-gray-100); ">
+        <div class="input-fields">
+            <div class="fields">
+                <label class="form-label" style="font-size: 20px; font-weight: bold">
+                    Location
+                </label>
+                <select name="city" class="form-select" style="width: 200px; border: 2px solid var(--bs-gray); border-radius: 4px;">
+                    <option value="" selected="">Select City</option>
+                    <option value="1">Kolkata</option>
+                    <option value="2">Ahmedabad</option>
+                    <option value="3">Delhi</option>
+                    <option value="4">Jaipur</option>
+                    <option value="5">Coimbatore</option>
+                    <option value="6">Chennai</option>
+                    <option value="7">Pune</option>
+                    <option value="8">Mumbai</option>
+                    <option value="9">Kochi</option>
+                    <option value="10">Hyderabad</option>
+                    <option value="11">Bangalore</option>
+                </select>
+            </div>
+
+            <div class="fields">
+                <label class="form-label" style="font-size: 20px; font-weight: bold">
+                    Brand Name
+                </label>
+                <select name="brand-name" class="form-select" style="width: 200px; border: 2px solid var(--bs-gray); border-radius: 4px;">
+                    <option value="" selected="">Brand</option>
+                    <option value="Maruti">Maruti Suzuki</option>
+                    <option value="Mahindra">Mahindra</option>
+                    <option value="Hyundai">Hyundai</option>
+                    <option value="Tata">Tata</option>
+                    <option value="Ford">Ford</option>
+                    <option value="Honda">Honda</option>
+                    <!-- <option value="Kia">Kia</option> -->
+                    <option value="Volkswagen">Volkswagen</option>
+                    <option value="Renault">Renault</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Audi">Audi</option>
+                    <option value="Mercedes">Mercedes</option>
+                    <option value="BMW">BMW</option>
+                    <!-- <option value="MG">MG</option> -->
+                    <option value="Skoda">Skoda</option>
+                    <option value="Porsche">Porsche</option>
+                    <option value="Nissan">Nissan</option>
+                </select>
+            </div>
+            <div class="fields">
+                <label class="form-label" style="font-size: 20px; font-weight: bold">
+                    Year of Manufacture
+                </label>
+                <select name="year" class="form-select" style="width: 200px; border: 2px solid var(--bs-gray); border-radius: 4px;">
+                    <option value="" selected="">Year</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                    <option value="2014">2014</option>
+                    <option value="2013">2013</option>
+                    <option value="2012">2012</option>
+                    <option value="2011">2011</option>
+                    <option value="2010">2010</option>
+                </select>
+            </div>
+            <div class="fields">
+                <label class="form-label" style="font-size: 20px; font-weight: bold">
+                    Car Price
+                </label>
+                <input name="new-price" class="form-control" type="number" step="0.01" style="width: 200px; border: 2px solid var(--bs-gray)" />
+            </div>
+            <div class="fields">
+                <label class="form-label" style="font-size: 20px; font-weight: bold">Average(Km/L)</label>
+                <input name="average" class="form-control" type="number" step="0.01" style="width: 200px; border: 2px solid var(--bs-gray)" />
+            </div>
+            <div class="fields">
+                <label class="form-label" style="font-size: 20px; font-weight: bold">Kilometer's Driven</label>
+                <input name="km-driven" class="form-control" type="number" step="0.01" style="width: 200px; border: 2px solid var(--bs-gray)" />
+            </div>
+            <div class="fields">
+                <label class="form-label" style="font-size: 20px; font-weight: bold">Fuel Type</label>
+                <select name="fuel" class="form-select" style="width: 200px; border: 2px solid var(--bs-gray); border-radius: 4px;">
+                    <option value="" selected="">Type</option>
+                    <option value="Petrol">Petrol</option>
+                    <option value="Diesal">Diesel</option>
+                </select>
+            </div>
+            <div class="fields">
+                <label class="form-label" style="font-size: 20px; font-weight: bold">Transmission</label>
+                <select name="transmission" class="form-select" style="width: 200px; border: 2px solid var(--bs-gray); border-radius: 4px;">
+                    <option value="Manual" selected="">Manual</option>
+                    <option value="Automatic">Automatic</option>
+                </select>
+            </div>
+            <div class="fields">
+                <label class="form-label" style="font-size: 20px; font-weight: bold">Engine's CC</label>
+                <input name="engine-cc" class="form-control" type="number" style="width: 200px; border: 2px solid var(--bs-gray)" />
+            </div>
+            <div class="fields">
+                <label class="form-label" style="font-size: 20px; font-weight: bold">Owner Type</label>
+                <select name="owner-type" class="form-select" style="width: 200px; border: 2px solid var(--bs-gray); border-radius: 4px;">
+                    <option value="0" selected="">First</option>
+                    <option value="Second">Second</option>
+                </select>
+            </div>
+            <!-- <div class="fields">
+                <label class="form-label" style="font-size: 20px; font-weight: bold">Model</label>
+                <select name="model-name" class="form-select" style="width: 200px; border: 2px solid var(--bs-gray); border-radius: 4px;">
+                    <option value="1" selected="">Linear</option>
+                    <option value="2">Random Forest</option>
+                    <option value="3">Decision Tree</option>
+                    <option value="4">Xg Boost</option>
+                </select>
+            </div> -->
+        </div>
+        <button class="btn btn-primary" type="submit" style="font-size: 20px; width: 160px; background: var(--bs-gray-700)">
+            Predict
+        </button>
+        <div id="prediction">
+            <div class="fields">
+                <label class="form-label text-center output-text" style="font-size: 25px">
+                    <strong>Best Estimated Value</strong>
+                </label>
+                <!-- <input class="form-control" type="text" id="output-value" /> -->
+                <p class="form-label" id="pred-res" style="font-size: 30px;"></p>
+            <!-- </div> -->
+            <!-- <div class="fields"> -->
+                <!-- <label class="form-label text-center output-text" style="font-size: 25px"> -->
+                    <!-- <strong>Best Estimated Value (RANDOM FOREST)</strong> -->
+                <!-- </label> -->
+                <!-- <input class="form-control" type="text" id="output-value" /> -->
+                <!-- <p class="form-label" id="pred-rf" style="font-size: 30px;"></p> -->
+            <!-- </div> -->
+            <!-- <div class="fields"> -->
+                <!-- <label class="form-label text-center output-text" style="font-size: 25px"> -->
+                    <!-- <strong>Best Estimated Value (DECISION TREE)</strong> -->
+                <!-- </label> -->
+                <!-- <input class="form-control" type="text" id="output-value" /> -->
+                <!-- <p class="form-label" id="pred-dt" style="font-size: 30px;"></p> -->
+            </div>    
+            
+        </div>
+    </form>
+    <footer class="footer-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>Services</h3>
+                    <ul>
+                        <li>Price Pediction</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#">Company</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 item text">
+                    <h3>SeekCars.com</h3>
+                    <p class="text-start d-xxl-flex align-items-center align-items-xxl-center">
+                        SeekCars employs advanced AI algorithms to predict used car
+                        prices. By analyzing historical data, market trends, and vehicle
+                        specifics, our platform provides accurate price estimates within
+                        seconds. Make informed buying and selling decisions with SeekCars
+                        reliable and user-friendly solution.
+                    </p>
+                </div>
+                <div class="col item social">
+                    <a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i
+                            class="icon ion-social-twitter"></i></a><a href="#"><i
+                            class="icon ion-social-whatsapp"></i></a><a href="#"><i
+                            class="icon ion-social-linkedin"></i></a>
+                </div>
+            </div>
+            <p class="copyright">SeekCars.com © 2023</p>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+</body>
+
+</html>
