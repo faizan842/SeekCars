@@ -157,5 +157,25 @@ def check_price():
 
     return jsonify({'result':rf})
 
+@app.route('/brand_name', methods=['POST'])
+def brand_name():
+    import pandas as pd
+
+# Load the CSV file into a pandas DataFrame
+    df = pd.read_csv('car_data.csv')
+
+    brand = request.json['brand']
+
+    models_for_brand = df[df['Brand'] == brand]['Model Name']
+
+    models_for_brand = models_for_brand.str.strip().str.upper()
+
+    # # Get unique models
+    unique_models_for_brand = models_for_brand.unique()
+
+    # print(type(unique_models_for_brand.tolist()))
+    
+    return jsonify(unique_models_for_brand.tolist())
+
 if __name__ == '__main__':
     app.run(debug=True)

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/Footer-Dark.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/Navigation-Clean.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
 
 
     <!-- <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css" />
@@ -22,25 +23,8 @@
   <link rel="stylesheet" href="static/css/styles.css" /> -->
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#prediction").hide();  // Hide the message initially
 
-            $("#name-form").submit(function (event) {
-                event.preventDefault();
-                $.ajax({
-                    type: "POST",
-                    url: "/check_price",
-                    data: $("#name-form").serialize(),
-                    success: function (response) {  
-                        $("#pred-res").text(response.result);
-                        // console.log(response.arr);
-                        $("#prediction").show();
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="{{ url_for('static', filename='css/index.js') }}"></script>
 
 
 </head>
@@ -96,7 +80,7 @@
                 <label class="form-label" style="font-size: 20px; font-weight: bold">
                     Brand Name
                 </label>
-                <select name="brand-name" class="form-select" style="width: 200px; border: 2px solid var(--bs-gray); border-radius: 4px;">
+                <select name="brand-name" id="brand" class="form-select" style="width: 200px; border: 2px solid var(--bs-gray); border-radius: 4px;">
                     <option value="" selected="">Brand</option>
                     <option value="Maruti">Maruti Suzuki</option>
                     <option value="Mahindra">Mahindra</option>
@@ -117,6 +101,18 @@
                     <option value="Nissan">Nissan</option>
                 </select>
             </div>
+
+            <div class="fields">
+                <label class="form-label" style="font-size: 20px; font-weight: bold">
+                    Select Model
+                </label>
+                <select id="model" name="model-name" class="form-select" style="width: 200px; border: 2px solid var(--bs-gray); border-radius: 4px;">
+                    <option value="" selected="">Brand</option>
+                </select>
+            </div>
+
+
+
             <div class="fields">
                 <label class="form-label" style="font-size: 20px; font-weight: bold">
                     Year of Manufacture
