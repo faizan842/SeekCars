@@ -60,8 +60,8 @@ r2 = r2_score(y_test, y_pred)
 print("Mean Squared Error:", mse)
 print("R-squared:", r2)
 
-# with open('rForest_model.pkl', 'wb') as model_file:
-#     pickle.dump(model, model_file)
+with open('rForest_model.pkl', 'wb') as model_file:
+    pickle.dump(model, model_file)
 
 # new_data = [[0.09767, 15.80, 15.91, 13.74, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, True, True, False, False, 7]]
 
