@@ -63,5 +63,5 @@ print("Mean Squared Error:", mse)
 print("R-squared:", r2)
 
 # Save the trained model
-with open('xgboost.pkl', 'wb') as model_file:
-    pickle.dump(best_gb_regressor, model_file)
+# with open('xgboost.pkl', 'wb') as model_file:
+#     pickle.dump(best_gb_regressor, model_file)

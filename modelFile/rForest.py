@@ -8,9 +8,9 @@ import pickle
 from sklearn.preprocessing import LabelEncoder
 
 
-# data = pd.read_csv("car_data.csv")
+data = pd.read_csv("car_data.csv")
 
-data = pd.read_csv("new_car_data.csv")
+# data = pd.read_csv("new_car_data.csv")
 
 
 
@@ -42,10 +42,8 @@ data['Engine'] = data['Engine'] / 100
 
 # data.sort_values(by='New_Price', inplace=True)
 
-# label_encoder = LabelEncoder()
-# data['modelvalue'] = label_encoder.fit_transform(data['Model Name'])
 
-data['modelvalue'] = range(0, len(data))
+# data['modelvalue'] = range(0, len(data))
 
 
 columns_to_drop = ["Name", "Power","Seats","Model Name"]
@@ -58,7 +56,7 @@ data.to_csv('sorted_data.csv', index=False)
 
 
 
-X = data[['modelvalue','Kilometers_Driven', 'Mileage', 'Engine', 'New_Price', 'Location', 'Brand_Audi', 'Brand_BMW', 'Brand_Ford', 'Brand_Honda', 'Brand_Hyundai', 'Brand_Mahindra', 'Brand_Maruti', 'Brand_Mercedes', 'Brand_Nissan', 'Brand_Porsche', 'Brand_Renault', 'Brand_Skoda', 'Brand_Tata', 'Brand_Toyota', 'Brand_Volkswagen', 'Fuel_Type_Diesel', 'Fuel_Type_Petrol', 'Transmission_Manual', 'Owner_Type_Second', 'Owner_Type_Third', 'Age']]
+X = data[['Kilometers_Driven', 'Mileage', 'Engine', 'New_Price', 'Location', 'Brand_Audi', 'Brand_BMW', 'Brand_Ford', 'Brand_Honda', 'Brand_Hyundai', 'Brand_Mahindra', 'Brand_Maruti', 'Brand_Mercedes', 'Brand_Nissan', 'Brand_Porsche', 'Brand_Renault', 'Brand_Skoda', 'Brand_Tata', 'Brand_Toyota', 'Brand_Volkswagen', 'Fuel_Type_Diesel', 'Fuel_Type_Petrol', 'Transmission_Manual', 'Owner_Type_Second', 'Owner_Type_Third', 'Age']]
 
 y = data['Price']
 

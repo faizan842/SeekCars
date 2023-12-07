@@ -31,9 +31,6 @@ y = data['Price']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# model = RandomForestRegressor(n_estimators=100, random_state=42)
-# model.fit(X_train, y_train)
-
 model = DecisionTreeRegressor(random_state=42)
 model.fit(X_train, y_train)
 
@@ -45,8 +42,8 @@ r2 = r2_score(y_test, y_pred)
 print("Mean Squared Error:", mse)
 print("R-squared:", r2)
 
-with open('dTree_model.pkl', 'wb') as model_file:
-    pickle.dump(model, model_file)
+# with open('dTree_model.pkl', 'wb') as model_file:
+#     pickle.dump(model, model_file)
 
 # new_data = [[21.000, 15.80, 15.91, 13.74, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, True, True, False, False, 7]]
 
