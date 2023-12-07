@@ -135,27 +135,28 @@ def check_price():
         'Age' : [age]
     })
 
-    # linear = f"{pred_linear(new_data)} Lakhs"
+    linear = f"{pred_linear(new_data)} Lakhs"
 
     rf = f"{pred_rForest(new_data)} lakhs"
 
-    # dT = f"{pred_dTree(new_data)} lakhs"
+    dT = f"{pred_dTree(new_data)} lakhs"
 
-    # xg = f"{pred_xgBoost(new_data)} lakhs"
+    xg = f"{pred_xgBoost(new_data)} lakhs"
 
-    # if data["model-name"] == "1":
-    #     return jsonify({'result':linear, 'arr': {'Random Forest': rf, 'Decision Tree': dT, 'Linear': linear, 'XgBoost': xg}})
-    # elif data["model-name"] == "2":
-    #     return jsonify({'result':rf, 'arr': {'Random Forest': rf, 'Decision Tree': dT, 'Linear': linear, 'XgBoost': xg}})
-    # elif data["model-name"] == "3":
-    #     return jsonify({'result':dT, 'arr': {'Random Forest': rf, 'Decision Tree': dT, 'Linear': linear, 'XgBoost': xg}})
-    # elif data["model-name"] == "4":
-    #     return jsonify({'result':xg, 'arr': {'Random Forest': rf, 'Decision Tree': dT, 'Linear': linear, 'XgBoost': xg}})
-    # else:
-    #     return jsonify({'result':linear, 'arr': {'Random Forest': rf, 'Decision Tree': dT, 'Linear': linear, 'XgBoost': xg}})
+    if data["ml-model"] == "1":
+        return jsonify({'result':linear, 'arr': {'Random Forest': rf, 'Decision Tree': dT, 'Linear': linear, 'XgBoost': xg}})
+    elif data["ml-model"] == "2":
+        return jsonify({'result':rf, 'arr': {'Random Forest': rf, 'Decision Tree': dT, 'Linear': linear, 'XgBoost': xg}})
+    elif data["ml-model"] == "3":
+        return jsonify({'result':dT, 'arr': {'Random Forest': rf, 'Decision Tree': dT, 'Linear': linear, 'XgBoost': xg}})
+    elif data["ml-model"] == "4":
+        return jsonify({'result':xg, 'arr': {'Random Forest': rf, 'Decision Tree': dT, 'Linear': linear, 'XgBoost': xg}})
+    else:
+        return jsonify({'result':linear, 'arr': {'Random Forest': rf, 'Decision Tree': dT, 'Linear': linear, 'XgBoost': xg}})
+
     # return jsonify({'result':rf, 'arr': {'Random Forest': rf, 'Decision Tree': dT, 'Linear': linear, 'XgBoost': xg}})
 
-    return jsonify({'result':rf})
+    # return jsonify({'result':rf})
 
 @app.route('/brand_name', methods=['POST'])
 def brand_name():

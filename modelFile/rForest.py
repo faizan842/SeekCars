@@ -10,12 +10,7 @@ from sklearn.preprocessing import LabelEncoder
 
 data = pd.read_csv("car_data.csv")
 
-# data = pd.read_csv("new_car_data.csv")
-
-
-
 data = pd.get_dummies(data, columns=["Brand", "Fuel_Type", "Transmission", "Owner_Type"])
-
 
 cityData = {
     "Kolkata": 1,
@@ -40,12 +35,6 @@ data['Kilometers_Driven'] = data['Kilometers_Driven'] / 1000
 
 data['Engine'] = data['Engine'] / 100
 
-# data.sort_values(by='New_Price', inplace=True)
-
-
-# data['modelvalue'] = range(0, len(data))
-
-
 columns_to_drop = ["Name", "Power","Seats","Model Name"]
 data.drop(columns=columns_to_drop, inplace=True)
 
@@ -53,8 +42,6 @@ data = data.astype(float)
 print(data.head())
 
 data.to_csv('sorted_data.csv', index=False)
-
-
 
 X = data[['Kilometers_Driven', 'Mileage', 'Engine', 'New_Price', 'Location', 'Brand_Audi', 'Brand_BMW', 'Brand_Ford', 'Brand_Honda', 'Brand_Hyundai', 'Brand_Mahindra', 'Brand_Maruti', 'Brand_Mercedes', 'Brand_Nissan', 'Brand_Porsche', 'Brand_Renault', 'Brand_Skoda', 'Brand_Tata', 'Brand_Toyota', 'Brand_Volkswagen', 'Fuel_Type_Diesel', 'Fuel_Type_Petrol', 'Transmission_Manual', 'Owner_Type_Second', 'Owner_Type_Third', 'Age']]
 
@@ -74,8 +61,8 @@ r2 = r2_score(y_test, y_pred)
 print("Mean Squared Error:", mse)
 print("R-squared:", r2)
 
-# with open('rForest_model.pkl', 'wb') as model_file:
-#     pickle.dump(model, model_file)
+with open('rForest_model.pkl', 'wb') as model_file:
+    pickle.dump(model, model_file)
 
 # new_data = [[0.09767, 15.80, 15.91, 13.74, False, False, False, False, True, False, False, False, False, False, False, False, False, False, False, False, True, True, False, False, 7]]
 

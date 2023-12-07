@@ -9,7 +9,7 @@ $(document).ready(function () {
             data: $("#name-form").serialize(),
             success: function (response) {  
                 $("#pred-res").text(response.result);
-                // console.log(response.arr);
+                console.log(response.arr);
                 $("#prediction").show();
             }
         });
