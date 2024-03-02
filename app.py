@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, jsonify
 import pickle
 import pandas as pd
 import datetime
+from flask import Flask, render_template, request, jsonify
 
 
 
@@ -157,6 +158,57 @@ def check_price():
     # return jsonify({'result':rf, 'arr': {'Random Forest': rf, 'Decision Tree': dT, 'Linear': linear, 'XgBoost': xg}})
 
     # return jsonify({'result':rf})
+
+@app.route('/all_brands', methods=['GET'])
+def all_brands():
+    import pandas as pd
+
+    df = pd.read_csv('car_data.csv')
+
+    unique_brands = df['Brand'].unique()
+
+    return jsonify(unique_brands.tolist())
+
+@app.route('/all_models', methods=['GET'])
+def all_models():
+    import pandas as pd
+
+    df = pd.read_csv('car_data.csv')
+
+    unique_models = df['Model Name'].unique()
+
+    return jsonify(unique_models.tolist())
+
+@app.route('/location', methods=['GET'])
+def location():
+    import pandas as pd
+
+    df = pd.read_csv('car_data.csv')
+
+    unique_locations = df['Location'].unique()
+
+    return jsonify(unique_locations.tolist())
+
+@app.route('/fuel_type', methods=['GET'])
+def fuel_type():
+    import pandas as pd
+
+    df = pd.read_csv('car_data.csv')
+
+    unique_fuel_types = df['Fuel Type'].unique()
+
+    return jsonify(unique_fuel_types.tolist
+    ())
+
+@app.route('/transmission', methods=['GET'])
+def transmission():
+    import pandas as pd
+
+    df = pd.read_csv('car_data.csv')
+
+    unique_transmissions = df['Transmission'].unique()
+
+    return jsonify(unique_transmissions.tolist())
 
 @app.route('/brand_name', methods=['POST'])
 def brand_name():
